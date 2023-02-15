@@ -9,27 +9,46 @@ import Foundation
 struct User: Identifiable, Codable {
 
 let id: Int
-
-let prenom:String
-
-let nom:String
 let avatar:String
+let nomComplet:String
+
+let email:String
+
+    let profession: String
+    let service: String
+    let departement: String
+    let direction: String
     
     
-    init(id: Int,prenom:String ,nom: String,avatar: String) {
+    init(id: Int,avatar: String, nomComplet: String,email: String, profession: String, service: String, departement: String, direction: String) {
+        
+       
+self.id = id
+        
+       
+self.avatar = avatar
+        
+       
+self.nomComplet = nomComplet
+        
+       
+self.email = email
+        
+       
+self.profession = profession
+        
+       
+self.service = service
+        
+       
+self.departement = departement
+        
+       
+self.direction = direction
         
         
-        self.id = id
         
-
-        self.prenom = prenom
-
-        self.nom = nom
-        
-        self.avatar = avatar
-        
-        }
+    }
 
 }
-
 

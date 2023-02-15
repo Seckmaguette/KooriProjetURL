@@ -16,10 +16,14 @@ struct FormulaireView: View {
 //    @State var id:String = ""
 //    @State var avatar:String = ""
     @State var id:Int = 1
+    @State var avatar:String =  "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
     @State var userName:String = ""
-    @State var name:String = ""
-    @State var avatar:String = "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
+    @State var adress:String = ""
     
+    @State var profession:String = ""
+    @State var service:String = ""
+    @State var departement:String = ""
+    @State var direction:String = ""
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         
@@ -30,7 +34,11 @@ struct FormulaireView: View {
                     samaTest()
                 
                     monTextfield(username: $userName)
-                    monTextfield2(name: $name)
+                    monTextfield2(adress: $adress)
+                    monTextfield3(profession: $profession)
+                    monTextfield4( service: $service)
+                    monTextfield5( departement: $departement)
+                    monTextfield6(direction: $direction)
                   
                     
                         .padding(.vertical, 22.0)
@@ -40,7 +48,7 @@ struct FormulaireView: View {
                     Button(action:{
                         
                         print(dataLoad.userList)
-                        let newUser = User (id:id, prenom:userName, nom:name,avatar:avatar )
+                        let newUser = User (id:id,avatar:avatar, nomComplet:userName,email:adress ,profession:profession , service: service, departement: departement, direction:direction )
                         dataLoad.userList.append(newUser)
                         print("vous avez ajoutez \([dataLoad.userList]) maintenant je l'evoie sur valider")
 
@@ -142,9 +150,105 @@ struct  monTextfield: View {
 
 
 struct  monTextfield2: View {
-    @Binding var name:String
+    @Binding var adress:String
     var body: some View {
-        TextField("nom", text: $name)
+        TextField("email", text: $adress)
+            .frame(height: 45)
+            .frame(width: 260)
+
+            .overlay( RoundedRectangle(cornerRadius:5)
+            .strokeBorder(Color.black,lineWidth: 2))
+//            .padding()
+//            .border(.black)
+//            .padding(.bottom,20.0)
+//            .frame(width: 355, height: 75)
+            .foregroundColor(Color.black)
+            
+//            .textFieldStyle(.roundedBorder)
+            .background(Color.white)
+//            .cornerRadius(35)
+        
+        
+        
+    }
+}
+
+struct  monTextfield3: View {
+    @Binding var profession:String
+    var body: some View {
+        TextField("profession", text: $profession)
+            .frame(height: 45)
+            .frame(width: 260)
+
+            .overlay( RoundedRectangle(cornerRadius:5)
+            .strokeBorder(Color.black,lineWidth: 2))
+//            .padding()
+//            .border(.black)
+//            .padding(.bottom,20.0)
+//            .frame(width: 355, height: 75)
+            .foregroundColor(Color.black)
+            
+//            .textFieldStyle(.roundedBorder)
+            .background(Color.white)
+//            .cornerRadius(35)
+        
+        
+        
+    }
+}
+
+struct  monTextfield4: View {
+    @Binding var service:String
+    var body: some View {
+        TextField("service", text: $service)
+            .frame(height: 45)
+            .frame(width: 260)
+
+            .overlay( RoundedRectangle(cornerRadius:5)
+            .strokeBorder(Color.black,lineWidth: 2))
+//            .padding()
+//            .border(.black)
+//            .padding(.bottom,20.0)
+//            .frame(width: 355, height: 75)
+            .foregroundColor(Color.black)
+            
+//            .textFieldStyle(.roundedBorder)
+            .background(Color.white)
+//            .cornerRadius(35)
+        
+        
+        
+    }
+}
+
+struct  monTextfield5: View {
+    @Binding var departement:String
+    var body: some View {
+        TextField("departement", text: $departement)
+            .frame(height: 45)
+            .frame(width: 260)
+
+            .overlay( RoundedRectangle(cornerRadius:5)
+            .strokeBorder(Color.black,lineWidth: 2))
+//            .padding()
+//            .border(.black)
+//            .padding(.bottom,20.0)
+//            .frame(width: 355, height: 75)
+            .foregroundColor(Color.black)
+            
+//            .textFieldStyle(.roundedBorder)
+            .background(Color.white)
+//            .cornerRadius(35)
+        
+        
+        
+    }
+}
+
+struct  monTextfield6: View {
+    @Binding var direction:String
+    var body: some View {
+        TextField("direction", text: $direction)
             .frame(height: 45)
             .frame(width: 260)
 
