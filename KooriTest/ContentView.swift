@@ -4,15 +4,20 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var dataLoad:ViewList=ViewList()
-    @State private var showModal=false
+//    @State private var showModal=false
+    @State private var isShow=false
+    
     var body: some View {
-   
+  
             Text("LIfe Of Koori")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-        ZStack{
+        
             
-                
+     
+      
+            NavigationView{
+                ZStack{
                     List (dataLoad.userList) { user in
                         HStack{
                             AsyncImage(url: URL(string: "\(user.avatar)")) { image in
@@ -39,26 +44,51 @@ struct ContentView: View {
                     
                 }
                 
+            }.padding ()
+                
+                    .navigationBarItems(trailing:Button(action: {
+                        self.isShow.toggle()
+                        
+                    }, label:{
+                        Image(systemName: "plus.circle")
+                    }))
+
+                    .sheet(isPresented: $isShow) {
+                        FormulaireView(isShow : self.$isShow)
+                    }
+                        
+                    .background(.gray)
              
-            
-            
+        }
+      
           
       
-        }.padding ()
+       
+          
+       
             .onAppear {
                 self.dataLoad.loadUserList()
 
                 
             }
-        Button(" SignUp") {
-                 self.showModal = true
-             }
-             .sheet(isPresented: $showModal) {
-                 FormulaireView()
-             }
+//
+//        Button(" SignUp") {
+//                 self.showModal = true
+//             }
+//             .sheet(isPresented: $showModal) {
+//                 FormulaireView()
+//             }
         
-    .padding(.top,300)
+//    .padding(.top,300)
             .environmentObject(dataLoad)
     }
         
     }
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            
+    }
+}

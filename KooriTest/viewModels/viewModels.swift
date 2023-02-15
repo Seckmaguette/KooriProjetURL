@@ -39,7 +39,7 @@ class ViewList: ObservableObject{
 //
 //        userList.append( newUser )
 //    }
-    
+//    newUser represente l'objet
     func validate(newUser:User){
         
         
@@ -51,10 +51,13 @@ class ViewList: ObservableObject{
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        print("voila l'objet\(newUser)")
+
         // encode the user object as JSON
         let encoder = JSONEncoder()
         let jsonData = try! encoder.encode(newUser)
+        print("je me suis bien encoder")
+        
        
         
         // set the JSON data as the HTTP body of the request
@@ -65,8 +68,8 @@ class ViewList: ObservableObject{
             // handle the response here
             if let error = error {print("Error: \(error.localizedDescription)")
             }else if let data = data, let response = response as? HTTPURLResponse {
-//                print("Status code: \(response.statusCode)")
-//                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+                print("Status code: \(response.statusCode)")
+                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
             }
         }
         task.resume()

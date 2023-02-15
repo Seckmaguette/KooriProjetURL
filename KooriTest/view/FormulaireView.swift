@@ -9,10 +9,13 @@ import SwiftUI
 
 struct FormulaireView: View {
     @EnvironmentObject var dataLoad:ViewList
-    
+    //        back
+
+    @Binding var isShow:Bool
     
 //    @State var id:String = ""
 //    @State var avatar:String = ""
+    @State var id:Int = 1
     @State var userName:String = ""
     @State var name:String = ""
     @State var avatar:String = "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
@@ -37,12 +40,14 @@ struct FormulaireView: View {
                     Button(action:{
                         
                         print(dataLoad.userList)
-                        let newUser = User (id:18, prenom:userName, nom:name,avatar:avatar )
+                        let newUser = User (id:id, prenom:userName, nom:name,avatar:avatar )
                         dataLoad.userList.append(newUser)
                         print("vous avez ajoutez \([dataLoad.userList]) maintenant je l'evoie sur valider")
-//
+
                         dataLoad.validate(newUser: newUser)
-                      
+                        //        back
+
+                        self.isShow.toggle()
                         
                     })
                     {
@@ -59,14 +64,29 @@ struct FormulaireView: View {
                 .padding()
             }
         .navigationTitle("New Contact")
-        .navigationBarTitleDisplayMode(.inline)
+            //        back
+
+        .navigationBarItems(leading:leading)
+
         }
+    }
+    //        back
+
+    var leading: some View{
+        Button(action: {
+            self.isShow.toggle()
+            
+        }, label:{
+            Text("Back")
+        })
+        
     }
 }
 
 struct FormulaireView_Previews: PreviewProvider {
     static var previews: some View {
-        FormulaireView()
+//        back
+        FormulaireView(isShow: .constant(Bool()))
     }
 }
 
