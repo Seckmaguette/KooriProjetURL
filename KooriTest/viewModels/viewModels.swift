@@ -75,7 +75,40 @@ class ViewList: ObservableObject{
         task.resume()
         
     }
+    
+    
+    
+    
+    func update(user:User){
         
+        // create the URL for the server endpoint, including the ID of the user to update
+        let url = URL(string: "http://localhost:3000/api/users/1")!
+
+        // create a URLRequest with PUT method and JSON content type
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // encode the user object as JSON
+        let encoder = JSONEncoder()
+        let jsonData = try! encoder.encode(user)
+
+        // set the JSON data as the HTTP body of the request
+        request.httpBody = jsonData
+
+        // send the HTTP request and handle the response
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            // handle the response here
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                print("Status code: \(response.statusCode)")
+                print("Response data: \(String(data: data, encoding: .utf8) ?? "")")
+            }
+        }
+        task.resume()
+
+    }
 
     
     

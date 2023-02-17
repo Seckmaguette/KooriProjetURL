@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var dataLoad:ViewList=ViewList()
+    public var   loginConnexions: Bool
 //    @State private var showModal=false
     @State private var isShow=false
     
@@ -19,27 +20,52 @@ struct ContentView: View {
             NavigationView{
                 ZStack{
                     List (dataLoad.userList) { user in
-                        HStack{
-                            AsyncImage(url: URL(string: "\(user.avatar)")) { image in
-                                image.resizable()
-                                    .frame(width:50, height: 50)
+                     
+//                      //
+                        
+                        NavigationLink(destination: UpdateView(), label:{
+                            HStack{
+                                
+//                                HStack{
+//                                Text("Test")
+//                                    Text (user.nomComplet )
+//
+//                                }
+                                HStack{
+                                    AsyncImage(url: URL(string: "\(user.avatar)")) { image in
+                                        image.resizable()
+                                            .frame(width:50, height: 50)
 
-                                    .clipped()
-                                    .aspectRatio(contentMode: .fill)
-                                    .cornerRadius(150)
-                                    .padding(.bottom,3)
+                                            .clipped()
+                                            .aspectRatio(contentMode: .fill)
+                                            .cornerRadius(150)
+                                            .padding(.bottom,3)
 
-                            } placeholder: {
-                                ProgressView()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 50, height: 50)
+                                    
+                                    Text (user.nomComplet )
+                                    Spacer()
+                                    Text (user.departement )
+            
+                                }
+                                if   loginConnexions{
+                                    Image(systemName: "checkmark.cercle")
+                                        .foregroundColor(.green)
+                                }else{
+                                    Image(systemName: "xmark.cercle")
+                                        .foregroundColor(.red)
+
+                                }
+                                
                             }
-                            .frame(width: 50, height: 50)
-                            
-                            Text (user.nomComplet )
-                            Spacer()
-                            Text (user.departement )
-    
-                        }
-                      
+                     
+                        })
+                        
+                        
+//                        //
                     
                 }
                 
@@ -87,7 +113,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView( loginConnexions: Bool())
             
     }
 }

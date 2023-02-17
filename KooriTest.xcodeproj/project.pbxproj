@@ -17,6 +17,7 @@
 		812D6249299BB007000F019A /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D6248299BB007000F019A /* model.swift */; };
 		812D624C299BB0D6000F019A /* viewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D624B299BB0D6000F019A /* viewModels.swift */; };
 		812D624F299BF4D3000F019A /* FormulaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D624E299BF4D3000F019A /* FormulaireView.swift */; };
+		812D6252299FDB0E000F019A /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D6251299FDB0E000F019A /* UpdateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		812D6248299BB007000F019A /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		812D624B299BB0D6000F019A /* viewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModels.swift; sourceTree = "<group>"; };
 		812D624E299BF4D3000F019A /* FormulaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaireView.swift; sourceTree = "<group>"; };
+		812D6251299FDB0E000F019A /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				812D6247299BAF9D000F019A /* models */,
 				812D621D299BA37F000F019A /* KooriTestApp.swift */,
 				812D621F299BA37F000F019A /* ContentView.swift */,
+				812D6250299FDA42000F019A /* updates */,
 				812D6221299BA381000F019A /* Assets.xcassets */,
 				812D6223299BA381000F019A /* Preview Content */,
 			);
@@ -158,6 +161,14 @@
 				812D624E299BF4D3000F019A /* FormulaireView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		812D6250299FDA42000F019A /* updates */ = {
+			isa = PBXGroup;
+			children = (
+				812D6251299FDB0E000F019A /* UpdateView.swift */,
+			);
+			path = updates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				812D6220299BA37F000F019A /* ContentView.swift in Sources */,
+				812D6252299FDB0E000F019A /* UpdateView.swift in Sources */,
 				812D6249299BB007000F019A /* model.swift in Sources */,
 				812D624C299BB0D6000F019A /* viewModels.swift in Sources */,
 				812D621E299BA37F000F019A /* KooriTestApp.swift in Sources */,

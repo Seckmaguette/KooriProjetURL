@@ -1,113 +1,79 @@
 //
-//  FormulaireView.swift
+//  UpdateView.swift
 //  KooriTest
 //
-//  Created by Maguette SECK on 14/02/2023.
+//  Created by Maguette SECK on 17/02/2023.
 //
 
 import SwiftUI
 
-struct FormulaireView: View {
+struct UpdateView: View {
     @EnvironmentObject var dataLoad:ViewList
-    //        back
 
-    @Binding var isShow:Bool
+    @State  var editMod = false
+   @State var editid:Int = 1
+   @State  var editavatar:String =  "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
+    @State  var edituserName:String = ""
+    @State private var editadress:String = ""
+
+   @State var editprofession:String = ""
+  @State  var editservice:String = ""
+   @State var editdepartement:String = ""
+   @State  var editdirection:String = ""
     
-//    @State var id:String = ""
-//    @State var avatar:String = ""
-    @State var id:Int = 0
-    @State var avatar:String =  "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
-    @State var userName:String = ""
-    @State var adress:String = ""
-    
-    @State var profession:String = ""
-    @State var service:String = ""
-    @State var departement:String = ""
-    @State var direction:String = ""
     var body: some View {
-        
-        
-        NavigationView() {
-        ZStack{
-            VStack {
-            
-                    samaTest()
-                
-                    monTextfield(username: $userName)
-                    monTextfield2(adress: $adress)
-                    monTextfield3(profession: $profession)
-                    monTextfield4( service: $service)
-                    monTextfield5( departement: $departement)
-                    monTextfield6(direction: $direction)
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView(){
+            ZStack{
+                VStack{
+                    samaTests()
+                    monTextfields(editusername: $edituserName)
+                    monTextfield2s(editadress: $editadress)
+                    monTextfield3s(editprofession: $editprofession)
+                    monTextfield4s(editservice: $editservice)
+                    monTextfield5s( editdepartement: $editdepartement)
+                    monTextfield6s(editdirection: $editdirection)
                   
                     
                         .padding(.vertical, 22.0)
-                    
-                    
-                    
                     Button(action:{
                         
-                        print(dataLoad.userList)
-                        let newUser = User (id:id,avatar:avatar, nomComplet:userName,email:adress ,profession:profession , service: service, departement: departement, direction:direction )
-                        dataLoad.userList.append(newUser)
-                        
-                        
-                        print(dataLoad.userList)
                       
+                        
+                        print(dataLoad.userList)
+                        let user = User (id:editid,avatar:editavatar, nomComplet:edituserName,email:editadress ,profession:editprofession , service: editservice, departement: editdepartement, direction:editdirection )
+                        dataLoad.userList.append(user)
+                        
                         print("vous avez ajoutez \([dataLoad.userList]) maintenant je l'evoie sur valider")
 
-                        dataLoad.validate(newUser: newUser)
                         
-                      
+                        dataLoad.update(user:user)
                         //        back
 
-                        self.isShow.toggle()
                         
                     })
                     {
                         
-                        loginConnexion()
+                        loginConnexions()
                         
                     }
-                    
+
                 }
-                
-                
-                
-                //            fermuture vStack
-                .padding()
             }
-        .navigationTitle("New Contact")
-            //        back
-
-        .navigationBarItems(leading:leading)
-
         }
-    }
-    //        back
-
-    var leading: some View{
-        Button(action: {
-            self.isShow.toggle()
-            
-        }, label:{
-            Text("Back")
-        })
         
     }
 }
 
-struct FormulaireView_Previews: PreviewProvider {
+struct UpdateView_Previews: PreviewProvider {
     static var previews: some View {
-//        back
-        FormulaireView(isShow: .constant(Bool()))
+        UpdateView()
     }
 }
 
 
 
-
-struct samaTest: View {
+struct samaTests: View {
     var body: some View {
         Text("Bienvenue au Lab")
             .multilineTextAlignment(.center)
@@ -122,9 +88,9 @@ struct samaTest: View {
 
 
 
-struct loginConnexion: View {
+struct loginConnexions: View {
     var body: some View {
-        Text("Enregistrer")
+        Text("Modifier")
             .padding()
             .frame(width: 250,height: 50)
             .foregroundColor(.white)
@@ -133,10 +99,10 @@ struct loginConnexion: View {
     }
 }
 
-struct  monTextfield: View {
-    @Binding var username:String
+struct  monTextfields: View {
+    @Binding var editusername:String
     var body: some View {
-        TextField("nomcomplet", text: $username)
+        TextField("nomcomplet", text: $editusername)
             .frame(height: 45)
             .frame(width: 260)
 
@@ -155,34 +121,10 @@ struct  monTextfield: View {
 }
 
 
-struct  monTextfield2: View {
-    @Binding var adress:String
+struct  monTextfield2s: View {
+    @Binding var editadress:String
     var body: some View {
-        TextField("email", text: $adress)
-            .frame(height: 45)
-            .frame(width: 260)
-
-            .overlay( RoundedRectangle(cornerRadius:5)
-            .strokeBorder(Color.black,lineWidth: 2))
-//            .padding()
-//            .border(.black)
-//            .padding(.bottom,20.0)
-//            .frame(width: 355, height: 75)
-            .foregroundColor(Color.black)
-            
-//            .textFieldStyle(.roundedBorder)
-            .background(Color.white)
-//            .cornerRadius(35)
-        
-        
-        
-    }
-}
-
-struct  monTextfield3: View {
-    @Binding var profession:String
-    var body: some View {
-        TextField("profession", text: $profession)
+        TextField("email", text: $editadress)
             .frame(height: 45)
             .frame(width: 260)
 
@@ -203,10 +145,10 @@ struct  monTextfield3: View {
     }
 }
 
-struct  monTextfield4: View {
-    @Binding var service:String
+struct  monTextfield3s: View {
+    @Binding var editprofession:String
     var body: some View {
-        TextField("service", text: $service)
+        TextField("profession", text: $editprofession)
             .frame(height: 45)
             .frame(width: 260)
 
@@ -227,10 +169,10 @@ struct  monTextfield4: View {
     }
 }
 
-struct  monTextfield5: View {
-    @Binding var departement:String
+struct  monTextfield4s: View {
+    @Binding var editservice:String
     var body: some View {
-        TextField("departement", text: $departement)
+        TextField("service", text: $editservice)
             .frame(height: 45)
             .frame(width: 260)
 
@@ -251,10 +193,34 @@ struct  monTextfield5: View {
     }
 }
 
-struct  monTextfield6: View {
-    @Binding var direction:String
+struct  monTextfield5s: View {
+    @Binding var editdepartement:String
     var body: some View {
-        TextField("direction", text: $direction)
+        TextField("departement", text: $editdepartement)
+            .frame(height: 45)
+            .frame(width: 260)
+
+            .overlay( RoundedRectangle(cornerRadius:5)
+            .strokeBorder(Color.black,lineWidth: 2))
+//            .padding()
+//            .border(.black)
+//            .padding(.bottom,20.0)
+//            .frame(width: 355, height: 75)
+            .foregroundColor(Color.black)
+            
+//            .textFieldStyle(.roundedBorder)
+            .background(Color.white)
+//            .cornerRadius(35)
+        
+        
+        
+    }
+}
+
+struct  monTextfield6s: View {
+    @Binding var editdirection:String
+    var body: some View {
+        TextField("direction", text: $editdirection)
             .frame(height: 45)
             .frame(width: 260)
 
