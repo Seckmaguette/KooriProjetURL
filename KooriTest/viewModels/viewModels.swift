@@ -82,8 +82,8 @@ class ViewList: ObservableObject{
     func update(user:User){
         
         // create the URL for the server endpoint, including the ID of the user to update
-        let url = URL(string: "http://localhost:3000/api/users/1")!
-
+        let url = URL(string: "http://localhost:3000/api/users/\(user.id)")!
+print( url)
         // create a URLRequest with PUT method and JSON content type
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"

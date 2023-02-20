@@ -4,7 +4,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var dataLoad:ViewList=ViewList()
-    public var   loginConnexions: Bool
+//    public var   loginConnexions: Bool
+   
 //    @State private var showModal=false
     @State private var isShow=false
     
@@ -23,7 +24,7 @@ struct ContentView: View {
                      
 //                      //
                         
-                        NavigationLink(destination: UpdateView(), label:{
+                        NavigationLink(destination: UpdateView(editid:user.id, edituserName: user.nomComplet,editadress: user.email,editprofession: user.profession,editservice: user.service,editdepartement:user.departement,editdirection: user.direction) ,label:{
                             HStack{
                                 
 //                                HStack{
@@ -51,14 +52,17 @@ struct ContentView: View {
                                     Text (user.departement )
             
                                 }
-                                if   loginConnexions{
-                                    Image(systemName: "checkmark.cercle")
-                                        .foregroundColor(.green)
-                                }else{
-                                    Image(systemName: "xmark.cercle")
-                                        .foregroundColor(.red)
-
-                                }
+                            
+//                                    if   loginConnexions {
+//                                     Image(systemName: "checkmark.cercle")
+//                                       .foregroundColor(.green)
+//                                    }
+//                                        else{
+//                                        Image(systemName: "xmark.cercle")
+//                                            .foregroundColor(.red)
+//
+//                                    }
+                               
                                 
                             }
                      
@@ -79,7 +83,7 @@ struct ContentView: View {
                     }))
 
                     .sheet(isPresented: $isShow) {
-                        FormulaireView(isShow : self.$isShow)
+                        FormulaireView(isShow : self.$isShow, id: Int())
                     }
                         
                     .background(.gray)
@@ -113,7 +117,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView( loginConnexions: Bool())
+        ContentView( )
+//    loginConnexions: Bool()
             
     }
 }

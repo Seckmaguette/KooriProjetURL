@@ -8,16 +8,16 @@
 import Foundation
 struct User: Identifiable, Codable {
 
-let id: Int
-let avatar:String
-let nomComplet:String
+var id: Int
+var avatar:String
+var nomComplet:String
 
-let email:String
+var email:String
 
-    let profession: String
-    let service: String
-    let departement: String
-    let direction: String
+    var profession: String
+    var service: String
+    var departement: String
+    var direction: String
     
     
     init(id: Int,avatar: String, nomComplet: String,email: String, profession: String, service: String, departement: String, direction: String) {

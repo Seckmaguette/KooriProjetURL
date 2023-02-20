@@ -11,10 +11,11 @@ struct UpdateView: View {
     @EnvironmentObject var dataLoad:ViewList
 
     @State  var editMod = false
-   @State var editid:Int = 1
+   @State var editid:Int
+
    @State  var editavatar:String =  "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
     @State  var edituserName:String = ""
-    @State private var editadress:String = ""
+    @State var editadress:String = ""
 
    @State var editprofession:String = ""
   @State  var editservice:String = ""
@@ -39,14 +40,29 @@ struct UpdateView: View {
                     Button(action:{
                         
                       
+                       
                         
+                       
                         print(dataLoad.userList)
                         let user = User (id:editid,avatar:editavatar, nomComplet:edituserName,email:editadress ,profession:editprofession , service: editservice, departement: editdepartement, direction:editdirection )
                         dataLoad.userList.append(user)
+                        print("le nbre\(user.id)")
                         
                         print("vous avez ajoutez \([dataLoad.userList]) maintenant je l'evoie sur valider")
-
+//
+//
+                        if !dataLoad.userList.isEmpty {
+//
+//
+                            
+                        print("vous avez modifié le user avec l'ID \(editid)")
+                                               }
+                                              else {
+                                                   print("aucun utilisateur avec l'ID \(editid) trouvé")
+                                               }
                         
+//
+//
                         dataLoad.update(user:user)
                         //        back
 
@@ -57,6 +73,7 @@ struct UpdateView: View {
                         loginConnexions()
                         
                     }
+                    
 
                 }
             }
@@ -67,7 +84,7 @@ struct UpdateView: View {
 
 struct UpdateView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateView()
+        UpdateView( editid: Int())
     }
 }
 
@@ -89,6 +106,7 @@ struct samaTests: View {
 
 
 struct loginConnexions: View {
+    
     var body: some View {
         Text("Modifier")
             .padding()

@@ -15,7 +15,7 @@ struct FormulaireView: View {
     
 //    @State var id:String = ""
 //    @State var avatar:String = ""
-    @State var id:Int = 0
+    @State var id:Int
     @State var avatar:String =  "https://w0.peakpx.com/wallpaper/88/517/HD-wallpaper-sasuke-anime-ecran-fond-manga-naruto-naruto-shippuden-personnage-uchiwa.jpg"
     @State var userName:String = ""
     @State var adress:String = ""
@@ -100,7 +100,7 @@ struct FormulaireView: View {
 struct FormulaireView_Previews: PreviewProvider {
     static var previews: some View {
 //        back
-        FormulaireView(isShow: .constant(Bool()))
+        FormulaireView(isShow: .constant(Bool()), id: Int())
     }
 }
 

@@ -11,7 +11,9 @@ import SwiftUI
 struct KooriTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(loginConnexions: Bool())
+            ContentView()
+//        loginConnexions: Bool()
         }
     }
 }
+ 
