@@ -20,56 +20,51 @@ struct ContentView: View {
       
             NavigationView{
                 ZStack{
-                    List (dataLoad.userList) { user in
-                     
-//                      //
-                        
-                        NavigationLink(destination: UpdateView(editid:user.id, edituserName: user.nomComplet,editadress: user.email,editprofession: user.profession,editservice: user.service,editdepartement:user.departement,editdirection: user.direction) ,label:{
-                            HStack{
-                                
-//                                HStack{
-//                                Text("Test")
-//                                    Text (user.nomComplet )
-//
-//                                }
-                                HStack{
-                                    AsyncImage(url: URL(string: "\(user.avatar)")) { image in
-                                        image.resizable()
-                                            .frame(width:50, height: 50)
-
-                                            .clipped()
-                                            .aspectRatio(contentMode: .fill)
-                                            .cornerRadius(150)
-                                            .padding(.bottom,3)
-
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                    .frame(width: 50, height: 50)
-                                    
-                                    Text (user.nomComplet )
-                                    Spacer()
-                                    Text (user.departement )
-            
-                                }
+                    
+                    List {
+                        ForEach(dataLoad.userList, id: \.id) {   user in
                             
-//                                    if   loginConnexions {
-//                                     Image(systemName: "checkmark.cercle")
-//                                       .foregroundColor(.green)
-//                                    }
-//                                        else{
-//                                        Image(systemName: "xmark.cercle")
-//                                            .foregroundColor(.red)
-//
-//                                    }
-                               
+                            NavigationLink(destination: UpdateView(editid:user.id, edituserName: user.nomComplet,editadress: user.email,editprofession: user.profession,editservice: user.service,editdepartement:user.departement,editdirection: user.direction) ,label:{
+                                HStack{
+                                    
                                 
-                            }
-                     
-                        })
-                        
-                        
-//                        //
+                                    HStack{
+                                        AsyncImage(url: URL(string: "\(user.avatar)")) { image in
+                                            image.resizable()
+                                                .frame(width:50, height: 50)
+                                            
+                                                .clipped()
+                                                .aspectRatio(contentMode: .fill)
+                                                .cornerRadius(150)
+                                                .padding(.bottom,3)
+                                            
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                        .frame(width: 50, height: 50)
+                                        
+                                        Text (user.nomComplet )
+                                        Spacer()
+                                        Text (user.departement )
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    //                      //
+                                    
+                                    
+                                    //
+                                    
+                                    
+                                }
+                                
+                            })
+                            
+                            //
+                            //
+                        }
+                        .onDelete(perform: deletePost)
                     
                 }
                 
@@ -110,7 +105,20 @@ struct ContentView: View {
         
 //    .padding(.top,300)
             .environmentObject(dataLoad)
-    }
+        
+        }
+    func deletePost(indexSet : IndexSet){
+        let id = indexSet.map{dataLoad.userList[$0].id}
+                print(id)
+                DispatchQueue.main.async {
+                    let parameters : [String :Any] = ["id":id[0]]
+                    
+                    print(parameters["id"])
+                    self.dataLoad.deletePost(parameters: parameters, id: parameters["id"] as! Int)
+                    //self.userViewModel.fetchPost()
+                }
+            }
+
         
     }
 

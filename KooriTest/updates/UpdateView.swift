@@ -79,6 +79,15 @@ struct UpdateView: View {
             }
         }
         
+//        var leading: some View{
+//            Button(action: {
+//                self.isShow.toggle()
+//
+//            }, label:{
+//                Text("Back")
+//            })
+//
+        
     }
 }
 
@@ -115,6 +124,7 @@ struct loginConnexions: View {
             .background(Color.black)
             .cornerRadius(25.0)
     }
+    
 }
 
 struct  monTextfields: View {

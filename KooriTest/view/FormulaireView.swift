@@ -58,7 +58,7 @@ struct FormulaireView: View {
 
                         dataLoad.validate(newUser: newUser)
                         
-                      
+
                         //        back
 
                         self.isShow.toggle()
